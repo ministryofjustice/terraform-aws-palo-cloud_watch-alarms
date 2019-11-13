@@ -1,15 +1,70 @@
-variable "scale_up_policy" {
-  type = string
-  description = "policy arn for scaling up"
-}
-variable "scale_down_policy" {
-  type = string
-  description = "policy for scaling down"
-}
 variable "name_space" {
   type = string
   description = "name space"
   default = "panfw"
+}
+#******************************************************************************
+# Metric Actions
+#******************************************************************************
+variable "dataplane_cpu-scale_up_actions" {
+  type = list(string)
+  description = "actions for scaling up"
+  default = [] 
+}
+variable "dataplane_cpu-scale_down_actions" {
+  type = list(string)
+  description = "actions for scaling down"
+  default = []
+}
+variable "active_sessions-scale_up_actions" {
+  type = list(string)
+  description = "actions for scaling up"
+  default = [] 
+}
+variable "active_sessions-scale_down_actions" {
+  type = list(string)
+  description = "actions for scaling down"
+  default = []
+}
+variable "session_utilization-scale_up_actions" {
+  type = list(string)
+  description = "actions for scaling up"
+  default = [] 
+}
+variable "session_utilization-scale_down_actions" {
+  type = list(string)
+  description = "actions for scaling down"
+  default = []
+}
+variable "GP_gateway_utilization-scale_up_actions" {
+  type = list(string)
+  description = "actions for scaling up"
+  default = [] 
+}
+variable "GP_gateway_utilization-scale_down_actions" {
+  type = list(string)
+  description = "actions for scaling down"
+  default = []
+}
+variable "GP_active_tunnel-scale_up_actions" {
+  type = list(string)
+  description = "actions for scaling up"
+  default = [] 
+}
+variable "GP_active_tunnel-scale_down_actions" {
+  type = list(string)
+  description = "actions for scaling down"
+  default = []
+}
+variable "dataplane_buffer_utilization-scale_up_actions" {
+  type = list(string)
+  description = "actions for scaling up"
+  default = [] 
+}
+variable "dataplane_buffer_utilization-scale_down_actions" {
+  type = list(string)
+  description = "actions for scaling down"
+  default = []
 }
 #******************************************************************************
 # Enable Metrics variables

@@ -8,7 +8,7 @@ resource "aws_cloudwatch_metric_alarm" "dataplane_cpu-high" {
   threshold = var.high_dataplanecpu_threshold 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_up_policy] 
+  alarm_actions = var.dataplane_cpu-scale_up_actions
   period = var.period-dataplane_cpu
   unit = "Percent"
   namespace = var.name_space 
@@ -24,7 +24,7 @@ resource "aws_cloudwatch_metric_alarm" "dataplane_cpu-low" {
   threshold = var.low_dataplanecpu_threshold 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_down_policy] 
+  alarm_actions = var.dataplane_cpu-scale_down_actions
   period = var.period-dataplane_cpu
   unit = "Percent"
   namespace = var.name_space 
@@ -40,7 +40,7 @@ resource "aws_cloudwatch_metric_alarm" "active_sessions-high" {
   threshold = var.threshold-active_sessions-high 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_up_policy] 
+  alarm_actions = var.active_sessions-scale_up_actions
   period = var.period-active_sessions 
   unit = "Count"
   namespace = var.name_space 
@@ -56,7 +56,7 @@ resource "aws_cloudwatch_metric_alarm" "active_sessions-low" {
   threshold = var.threshold-active_sessions-low 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_down_policy] 
+  alarm_actions = var.active_sessions-scale_down_actions
   period = var.period-active_sessions
   unit = "Count"
   namespace = var.name_space 
@@ -72,7 +72,7 @@ resource "aws_cloudwatch_metric_alarm" "session_utilization-high" {
   threshold = var.threshold-session_utilization-high 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_up_policy] 
+  alarm_actions = var.session_utilization-scale_up_actions
   period = var.period-session_utilization 
   unit = "Percent"
   namespace = var.name_space 
@@ -88,7 +88,7 @@ resource "aws_cloudwatch_metric_alarm" "session_utilization-low" {
   threshold = var.threshold-session_utilization-low 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_down_policy] 
+  alarm_actions = var.session_utilization-scale_down_actions
   period = var.period-session_utilization
   unit = "Percent"
   namespace = var.name_space 
@@ -104,7 +104,7 @@ resource "aws_cloudwatch_metric_alarm" "GP_gateway_utilization-high" {
   threshold = var.threshold-GP_Gateway_Utilization-high 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_up_policy] 
+  alarm_actions = var.GP_gateway_utilization-scale_up_actions
   period = var.period-GP_gateway_utilization 
   unit = "Percent"
   namespace = var.name_space 
@@ -120,7 +120,7 @@ resource "aws_cloudwatch_metric_alarm" "GP_gateway_utilization-low" {
   threshold = var.threshold-GP_gateway_utilization-low 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_down_policy] 
+  alarm_actions = var.GP_gateway_utilization-scale_down_actions
   period = var.period-GP_gateway_utilization
   unit = "Percent"
   namespace = var.name_space 
@@ -136,7 +136,7 @@ resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-high" {
   threshold = var.threshold-GP_active_tunnel-high 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_up_policy] 
+  alarm_actions = var.GP_active_tunnel-scale_up_actions
   period = var.period-GP_active_tunnel 
   unit = "Count"
   namespace = var.name_space 
@@ -152,7 +152,7 @@ resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-low" {
   threshold = var.threshold-GP_active_tunnel-low 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_down_policy] 
+  alarm_actions = var.GP_active_tunnel-scale_down_actions
   period = var.period-GP_active_tunnel
   unit = "Count"
   namespace = var.name_space 
@@ -168,7 +168,7 @@ resource "aws_cloudwatch_metric_alarm" "dataplane_buffer_utilization-high" {
   threshold = var.threshold-dataplane_buffer_utilization-high 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_up_policy] 
+  alarm_actions = var.dataplane_buffer_utilization-scale_up_actions
   period = var.period-dataplane_buffer_utilization 
   unit = "Percent"
   namespace = var.name_space 
@@ -184,7 +184,7 @@ resource "aws_cloudwatch_metric_alarm" "dataplane_buffer_utilization-low" {
   threshold = var.threshold-dataplane_buffer_utilization-low 
   statistic = "Average"
   actions_enabled = true
-  alarm_actions = [var.scale_down_policy] 
+  alarm_actions = var.dataplane_buffer_utilization-scale_down_actions
   period = var.period-dataplane_buffer_utilization
   unit = "Percent"
   namespace = var.name_space 

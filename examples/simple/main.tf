@@ -4,8 +4,8 @@ provider "aws" {
 
 module "cw" {
   source = "../../"
-  scale_down_policy = aws_autoscaling_policy.bat.arn
-  scale_up_policy = aws_autoscaling_policy.bat.arn
+  active_sessions-scale_down_actions = [aws_autoscaling_policy.bat.arn]
+  active_sessions-scale_up_actions = [aws_autoscaling_policy.bat.arn]
   dataplane_cpu-enable = true
   high_dataplanecpu_threshold = 60
   low_dataplanecpu_threshold = 20
