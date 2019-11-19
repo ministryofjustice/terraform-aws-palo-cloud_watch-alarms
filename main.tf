@@ -162,7 +162,7 @@ resource "aws_cloudwatch_metric_alarm" "dataplane_buffer_utilization-high" {
   count = var.dataplane_buffer_utilization-enable ? 1 : 0
   alarm_name = "dataplane_buffer_utilization-high" 
   alarm_description = "Alarm for high - Dataplane Buffer Utilization"
-  metric_name = "panActiveSession"
+  metric_name = "DataPlanePacketBufferUtilization"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
   threshold = var.threshold-dataplane_buffer_utilization-high 
@@ -189,3 +189,35 @@ resource "aws_cloudwatch_metric_alarm" "dataplane_buffer_utilization-low" {
   unit = "Percent"
   namespace = var.name_space 
 }
+
+resource "aws_cloudwatch_metric_alarm" "ssl_proxy_utilization-high" {
+  count = var.ssl_proxy_utilization-enable ? 1 : 0
+  alarm_name = "ssl_proxy_utilization-high" 
+  alarm_description = "Alarm for high - Session SSL Proxy Utilization"
+  metric_name = "panSessionSslProxyUtilization"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods = "1"
+  threshold = var.threshold-ssl_proxy_utilization-high 
+  statistic = "Average"
+  actions_enabled = true
+  alarm_actions = var.ssl_proxy_utilization-scale_up_actions
+  period = var.period-ssl_proxy_utilization 
+  unit = "Percent"
+  namespace = var.name_space 
+}
+
+resource "aws_cloudwatch_metric_alarm" "ssl_proxy_utilization-low" {
+  count = var.ssl_proxy_utilization-enable ? 1 : 0
+  alarm_name = "ssl_proxy_utilization-low" 
+  alarm_description = "Alarm for low - Session SSL Proxy Utilization"
+  metric_name = "DataPlanePacketBufferUtilization"
+  comparison_operator = "LessThanThreshold"
+  evaluation_periods = "1"
+  threshold = var.threshold-ssl_proxy_utilization-low 
+  statistic = "Average"
+  actions_enabled = true
+  alarm_actions = var.ssl_proxy_utilization-scale_down_actions
+  period = var.period-ssl_proxy_utilization
+  unit = "Percent"
+  namespace = var.name_space 
+ }

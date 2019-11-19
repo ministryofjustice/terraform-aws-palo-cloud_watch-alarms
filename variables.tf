@@ -66,38 +66,54 @@ variable "dataplane_buffer_utilization-scale_down_actions" {
   description = "actions for scaling down"
   default = []
 }
+variable "ssl_proxy_utilization-scale_up_actions" {
+  type = list(string)
+  description = "actions for scaling up"
+  default = [] 
+}
+variable "ssl_proxy_utilization-scale_down_actions" {
+  type = list(string)
+  description = "actions for scaling down"
+  default = []
+}
 #******************************************************************************
 # Enable Metrics variables
 #******************************************************************************
 variable "dataplane_cpu-enable" {
   type = bool
   default = false
-  description = "Enable Metrice"
+  description = "Enable Metric"
 }
 variable "active_sessions-enable" {
   type = bool
   default = false
-  description = "Enable Metrice"
+  description = "Enable Metric"
 }
 variable "session_utilization-enable" {
   type = bool
   default = false
-  description = "Enable Metrice"
+  description = "Enable Metric"
 }
 variable "GP_gateway_utilization-enable" {
   type = bool
   default = false
-  description = "Enable Metrice"
+  description = "Enable Metric"
 }
 variable "GP_active_tunnel-enable" {
   type = bool
   default = false
-  description = "Enable Metrice"
+  description = "Enable Metric"
 }
 variable "dataplane_buffer_utilization-enable" {
   type = bool
   default = false
-  description = "Enable Metrice"
+  description = "Enable Metric"
+}
+
+variable "ssl_proxy_utilization-enable" {
+  type = bool
+  default = false
+  description = "Enable Metric"
 }
 
 #******************************************************************************
@@ -163,6 +179,16 @@ variable "threshold-dataplane_buffer_utilization-low" {
   default = 999
   description = "threshold-dataplane_buffer_utilization-low" 
 }
+variable "threshold-ssl_proxy_utilization-high" {
+  type = number
+  default = 999
+  description = "threshold-ssl_proxy_utilization-high" 
+}
+variable "threshold-ssl_proxy_utilization-low" {
+  type = number
+  default = 999
+  description = "threshold-dataplane_buffer_utilization-low" 
+}
 #******************************************************************************
 #  Period Variables
 #******************************************************************************
@@ -197,3 +223,8 @@ variable "period-dataplane_buffer_utilization" {
   description = "period-dataplane_buffer_utilization"
 }
 
+variable "period-ssl_proxy_utilization" {
+  type = number
+  default = 300
+  description = "period-ssl_proxy_utilization"
+}
