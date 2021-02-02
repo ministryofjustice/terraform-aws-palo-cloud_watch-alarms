@@ -142,21 +142,21 @@ resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-high" {
   namespace           = var.namespace
 }
 
-# resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-low" {
-#   count               = var.GP_active_tunnel-enable ? 1 : 0
-#   alarm_name          = "GP_active_tunnel-low"
-#   alarm_description   = "Alarm for low - GP active tunnel"
-#   metric_name         = "panGPGWUtilizationActiveTunnels"
-#   comparison_operator = "LessThanThreshold"
-#   evaluation_periods  = "1"
-#   threshold           = var.threshold-GP_active_tunnel-low
-#   statistic           = "Average"
-#   actions_enabled     = true
-#   alarm_actions       = var.GP_active_tunnel-scale_down_actions
-#   period              = var.period-GP_active_tunnel-low
-#   unit                = "Count"
-#   namespace           = var.namespace
-# }
+resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-low" {
+  count               = var.GP_active_tunnel-enable ? 1 : 0
+  alarm_name          = "GP_active_tunnel-low"
+  alarm_description   = "Alarm for low - GP active tunnel"
+  metric_name         = "panGPGWUtilizationActiveTunnels"
+  comparison_operator = "LessThanThreshold"
+  evaluation_periods  = "1"
+  threshold           = var.threshold-GP_active_tunnel-low
+  statistic           = "Average"
+  actions_enabled     = true
+  alarm_actions       = var.GP_active_tunnel-scale_down_actions
+  period              = var.period-GP_active_tunnel-low
+  unit                = "Count"
+  namespace           = var.namespace
+}
 
 resource "aws_cloudwatch_metric_alarm" "dataplane_buffer_utilization-high" {
   count               = var.dataplane_buffer_utilization-enable ? 1 : 0
