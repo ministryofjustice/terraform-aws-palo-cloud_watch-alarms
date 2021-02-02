@@ -137,7 +137,7 @@ resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-high" {
   statistic           = "Average"
   actions_enabled     = true
   alarm_actions       = var.GP_active_tunnel-scale_up_actions
-  period              = var.period-GP_active_tunnel
+  period              = var.period-GP_active_tunnel-high
   unit                = "Count"
   namespace           = var.namespace
 }
@@ -153,7 +153,7 @@ resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-high" {
 #   statistic           = "Average"
 #   actions_enabled     = true
 #   alarm_actions       = var.GP_active_tunnel-scale_down_actions
-#   period              = var.period-GP_active_tunnel
+#   period              = var.period-GP_active_tunnel-low
 #   unit                = "Count"
 #   namespace           = var.namespace
 # }
