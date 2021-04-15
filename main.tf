@@ -151,17 +151,11 @@ resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-low" {
   evaluation_periods  = "1"
   threshold           = var.threshold-GP_active_tunnel-low
   statistic           = "Average"
-  actions_enabled     = true
+  actions_enabled     = false
   alarm_actions       = var.GP_active_tunnel-scale_down_actions
   period              = var.period-GP_active_tunnel-low
   unit                = "Count"
   namespace           = var.namespace
-
-  lifecycle {
-    ignore_changes = [
-      actions_enabled,
-    ]
-  }
 }
 
 resource "aws_cloudwatch_metric_alarm" "dataplane_buffer_utilization-high" {
