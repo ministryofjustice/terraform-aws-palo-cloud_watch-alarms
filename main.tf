@@ -156,6 +156,12 @@ resource "aws_cloudwatch_metric_alarm" "GP_active_tunnel-low" {
   period              = var.period-GP_active_tunnel-low
   unit                = "Count"
   namespace           = var.namespace
+
+  lifecycle {
+    ignore_changes = [
+      actions_enabled,
+    ]
+  }
 }
 
 resource "aws_cloudwatch_metric_alarm" "dataplane_buffer_utilization-high" {
@@ -221,3 +227,4 @@ resource "aws_cloudwatch_metric_alarm" "ssl_proxy_utilization-low" {
   unit                = "Percent"
   namespace           = var.namespace
 }
+
